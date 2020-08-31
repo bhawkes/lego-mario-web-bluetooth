@@ -1,0 +1,135 @@
+{
+  "types": {
+    "0": {
+      "name": "Sensor"
+    },
+    "9": {
+      "name": "Walking / Ground"
+    },
+    "10": {
+      "name": "Water /  Blue / Splashing"
+    },
+    "11": {
+      "name": "Grass / Green"
+    },
+    "12": {
+      "name": "Sand / Yellow"
+    },
+    "33": {
+      "name": "Piranha Slide"
+    },
+    "35": {
+      "name": "Cloud"
+    },
+    "38": {
+      "name": "Desert Pokey Rotating Platform"
+    },
+    "39": {
+      "name": "Rotating Platform x2 Brown"
+    },
+    "40": {
+      "name": "Rotating Platform x1 Brown"
+    },
+    "42": {
+      "name": "Moving Platform Brown and yellow"
+    },
+    "43": {
+      "name": "Nintendo Entertainment System"
+    },
+    "66": {
+      "name": "Common enemy"
+    },
+    "67": {
+      "name": "Bob-omb"
+    },
+    "68": {
+      "name": "Spiny / Buzzy Beetle"
+    },
+    "69": {
+      "name": "Common water enemy"
+    },
+    "70": {
+      "name": "Boo / Peepa"
+    },
+    "80": {
+      "name": "Shy Guy"
+    },
+    "81": {
+      "name": "Whomp"
+    },
+    "82": {
+      "name": "Dry Bones"
+    },
+    "83": {
+      "name": "Bowser Battle",
+      "info": "Platform & Bowser"
+    },
+    "84": {
+      "name": "Koopa Troopa"
+    },
+    "85": {
+      "name": "Thwomp"
+    },
+    "86": {
+      "name": "Toad"
+    },
+    "87": {
+      "name": "Yoshi"
+    },
+    "88": {
+      "name": "Pokey"
+    },
+    "89": {
+      "name": "Swooper"
+    },
+    "90": {
+      "name": "King Boo"
+    },
+    "91": {
+      "name": "Bowser Jr."
+    },
+    "92": {
+      "name": "Toadette"
+    },
+    "128": {
+      "name": "? Block"
+    },
+    "129": {
+      "name": "1 Block"
+    },
+    "130": {
+      "name": "2 Block"
+    },
+    "131": {
+      "name": "3 Block"
+    },
+    "132": {
+      "name": "P Block"
+    },
+    "134": {
+      "name": "Coin tiles"
+    },
+    "135": {
+      "name": "Piranha Plant"
+    },
+    "136": {
+      "name": "Stone Eye"
+    },
+    "176": {
+      "name": "Fire Mario"
+    },
+    "177": {
+      "name": "Cat Matio"
+    },
+    "178": {
+      "name": "Builder Mario"
+    },
+    "179": {
+      "name": "Propeller Mario"
+    }
+  },
+  "keys": {
+    "19": "Scanned tag ID",
+    "32": "Coins collected"
+  }
+}

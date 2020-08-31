@@ -1,13 +1,67 @@
 <template lang="pug">
 div
-  button(@click="requestAndConnect", :disabled="device") connect
+  .container.mb-5
+    .row
+      .col
+        h1 Lego Mario
+      .col.align-self-center
+        button(@click="requestAndConnect", :disabled="device") connect
 
-  .color-sensor(:style="{ backgroundColor: `rgb(${sensors.rgb})` }")
-
-  pre {{ sensors.motion }}
+  .container
+    .row
+      .col
+        h2.mb-4 Sensors
+        .sensor.mb-2
+          .row
+            .col-4
+              .sensor__box.sensor__box--tag
+            .col-8
+              h3.mb-3 Tag
+        .sensor.mb-2
+          .row
+            .col-4
+              .sensor__box.sensor__box--color(
+                :style="{ backgroundColor: `rgb(${sensors.rgb})` }"
+              )
+            .col-8
+              h3.mb-3 RGB
+              pre r:{{ sensors.rgb[0] }}, g:{{ sensors.rgb[1] }}, b:{{ sensors.rgb[2] }}
+        .sensor.mb-2
+          .row
+            .col-4
+              .sensor__box.sensor__box--pants
+            .col-8
+              h3.mb-3 Pants
+        .sensor.mb-2
+          .row
+            .col-4
+              .sensor__box.sensor__box--motion
+            .col-8
+              h3.mb-3 Motion
+      .col
+        h2.mb-4 Score
+        h3(v-for="entry in scores", v-if="entry.value") {{ events.types[entry.type] ? events.types[entry.type].name : '???' }} = {{ entry.value }}
+      .col
+        h2.mb-4 Events
+        table.u--w_100
+          thead
+            tr
+              th id
+              th name
+              th key
+              th value
+          tbody
+            tr(v-for="entry in state.log")
+              td {{ entry.type }}
+              td {{ events.types[entry.type] ? events.types[entry.type].name : '???' }}
+              td {{ events.keys[entry.key] ? events.keys[entry.key] : entry.key }}
+              td {{ entry.value }}
 </template>
 
 <script>
+import stickers from "~/assets/stickers.json";
+import events from "~/assets/events.json";
+
 export default {
   data() {
     return {
@@ -15,17 +69,36 @@ export default {
       server: null,
       service: null,
       characteristic: null,
+
+      stickers,
+      events,
       sensors: {
-        rgb: [],
+        rgb: [0, 0, 0],
         pants: [],
         motion: [],
         // last sticker?
         // last event?
       },
-      state: { log: [], coins: 0 },
+      state: {
+        log: [],
+        coins: 0,
+        totals: events.types,
+      },
     };
   },
-  computed: {},
+  computed: {
+    scores() {
+      let scores = {};
+
+      this.state.log.forEach((entry) => {
+        if (entry.key === 32) {
+          scores[entry.type] = entry;
+        }
+      });
+
+      return scores;
+    },
+  },
   methods: {
     async requestAndConnect() {
       try {
@@ -66,7 +139,7 @@ export default {
 
       await this.subscribeToEvents();
       await this.subscribeToColor();
-      // await this.subscribeToPants();
+      await this.subscribeToPants();
       // await this.subscribeToMotion();
     },
     async subscribeToEvents() {
@@ -77,7 +150,7 @@ export default {
           65, // Message type (Port Input Format Setup (Single))
           3, // port id
           2, // port mode
-          5, // interval
+          1, // interval
           0, //
           0, //
           0, //
@@ -114,43 +187,92 @@ export default {
 
       const messageType = messageHeader[2];
 
-      // console.log(messageHeader, messageBody);
-
-      // Only handle incoming port values from here.
-      // https://lego.github.io/lego-ble-wireless-protocol-docs/index.html#port-value-single
       if (messageType != 69) return;
 
       const port = messageBody[0];
 
-      if (port === 1) {
-        this.sensors.rgb = messageBody.slice(1);
-      } else if (port === 0) {
+      if (port === 0) {
         this.sensors.motion = messageBody.slice(1);
+      } else if (port === 1) {
+        this.sensors.rgb = messageBody.slice(1);
       } else if (port === 3) {
-        // parse events
-        console.log(message);
+        const eventType = messageBody[1];
+        const eventKey = messageBody[2];
+        const eventValue = messageBody[3] + messageBody[4] * 256;
+
+        this.parseEvent(eventType, eventKey, eventValue);
+      }
+    },
+    parseEvent(type, key, value) {
+      this.state.log.push({
+        type,
+        key,
+        value,
+      });
+
+      if (key === 32) {
+        this.state.totals[type].coins = value;
       }
     },
   },
 };
 </script>
 
-
 <style scoped>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+  margin: 0;
+}
+
 .color-sensor {
-  width: 250px;
-  height: 250px;
-  margin: 20px;
-  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  /* margin: 20px; */
+  border-radius: 5px;
   border: 2px dashed #262626;
 }
 
-.motion-sensor {
-  width: 250px;
-  height: 250px;
-  margin: 20px;
-  border-radius: 20px;
-  background-color: #cccccc;
-  /* border: 2px dashed #262626; */
+.sensor {
+  /* display: flex;
+  align-items: flex-start; */
+}
+
+.sensor__box {
+  width: 100px;
+  height: 100%;
+  display: inline-block;
+  padding-top: 100%;
+  /* margin: 20px; */
+  border-radius: 5px;
+  border: 2px dashed #262626;
+}
+
+.grid {
+}
+
+.grid__row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.grid__col {
+  flex: 1;
+}
+
+.u--align-center {
+  align-items: center;
+}
+
+.u--space-between {
+  justify-content: space-between;
+}
+
+.u--w_100 {
+  width: 100%;
 }
 </style>

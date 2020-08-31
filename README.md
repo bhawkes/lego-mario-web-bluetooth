@@ -2,9 +2,9 @@
 
 Exploring connecting to the Lego Mario toy using a web browser.
 
-[](https://github.com/bricklife/LEGO-Mario-Reveng)
-[](https://github.com/nearprosmith/legomario-on-mac)
-[](https://github.com/LEGO/lego-ble-wireless-protocol-docs)
+## Work in progress
+
+Can be viewed here: [https://lego-mario.netlify.app/](https://lego-mario.netlify.app/)
 
 ## Build Setup
 

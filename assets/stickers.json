@@ -1,0 +1,232 @@
+[
+  {
+    "value": 2,
+    "name": "Goomba / Lava Bubble / Monty Mole / Paragoomba / Bullet Bill / Fuzzy",
+    "code": [0, 1, 3]
+  },
+  {
+    "value": 3,
+    "name": "Shy Guy",
+    "code": [0, 1, 4]
+  },
+  {
+    "value": 4,
+    "name": "Whomp",
+    "code": [0, 1, 5]
+  },
+  {
+    "value": 11,
+    "name": "Nintendo Entertainment System",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 14,
+    "name": "Bob-omb",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 16,
+    "name": "Rotate (Yellow)",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 18,
+    "name": "Dry Bones",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 20,
+    "name": "Rotate (Yellow)",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 21,
+    "name": "Time Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 23,
+    "name": "Bowser Battle",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 26,
+    "name": "Desert Pokey Hammer",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 29,
+    "name": "Bowser",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 30,
+    "name": "Rotate (Brown)",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 32,
+    "name": "Toadette",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 33,
+    "name": "1 Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 41,
+    "name": "? Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 43,
+    "name": "2 Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 44,
+    "name": "Mover",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 46,
+    "name": "Cloud",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 48,
+    "name": "Spiny / Buzzy Beetle",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 49,
+    "name": "Thwomp Drop Platform",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 53,
+    "name": "Lava Bubble",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 54,
+    "name": "Koopa",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 55,
+    "name": "Thwomp",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 56,
+    "name": "Pirahna Plant Cart",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 60,
+    "name": "Toad",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 91,
+    "name": "POW Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 93,
+    "name": "Yoshi",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 95,
+    "name": "P Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 99,
+    "name": "Super Mushroom",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 107,
+    "name": "Stone Eye",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 110,
+    "name": "Pokey",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 112,
+    "name": "Coins (10)",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 114,
+    "name": "Rotate (Brown)",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 115,
+    "name": "Koopa",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 121,
+    "name": "Swooper",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 123,
+    "name": "Star Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 126,
+    "name": "Pirahna Plant",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 128,
+    "name": "3 Block",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 129,
+    "name": "Boo / Peepa",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 136,
+    "name": "King Boo",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 137,
+    "name": "Cheep Cheep / Eep Cheep / Urchin / Blooper",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 153,
+    "name": "Bowser Jr.",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 183,
+    "name": "End Course",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 184,
+    "name": "Start Course",
+    "code": [0, 0, 0]
+  },
+  {
+    "value": 190,
+    "name": "Coins (5)",
+    "code": [0, 0, 0]
+  }
+]
