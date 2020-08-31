@@ -39,7 +39,7 @@ div
             .col-8
               h3.mb-3 Motion
       .col
-        h2.mb-4 Score
+        h2.mb-4 Score = {{total}}
         h3(v-for="entry in scores", v-if="entry.value") {{ events.types[entry.type] ? events.types[entry.type].name : '???' }} = {{ entry.value }}
       .col
         h2.mb-4 Events
@@ -75,22 +75,22 @@ export default {
       sensors: {
         rgb: [0, 0, 0],
         pants: [],
-        motion: [],
+        motion: []
         // last sticker?
         // last event?
       },
       state: {
         log: [],
         coins: 0,
-        totals: events.types,
-      },
+        totals: events.types
+      }
     };
   },
   computed: {
     scores() {
       let scores = {};
 
-      this.state.log.forEach((entry) => {
+      this.state.log.forEach(entry => {
         if (entry.key === 32) {
           scores[entry.type] = entry;
         }
@@ -98,6 +98,11 @@ export default {
 
       return scores;
     },
+    total() {
+      return Object.values(this.scores).reduce((accumulator, entry) => {
+        return accumulator + entry.value;
+      }, 0);
+    }
   },
   methods: {
     async requestAndConnect() {
@@ -105,11 +110,11 @@ export default {
         this.device = await navigator.bluetooth.requestDevice({
           filters: [
             {
-              namePrefix: "LEGO Mario",
-            },
+              namePrefix: "LEGO Mario"
+            }
           ],
           // acceptAllDevices: true,
-          optionalServices: ["00001623-1212-efde-1623-785feabcd123"],
+          optionalServices: ["00001623-1212-efde-1623-785feabcd123"]
         });
       } catch (err) {
         return;
@@ -154,7 +159,7 @@ export default {
           0, //
           0, //
           0, //
-          1, //
+          1 //
         ])
       );
     },
@@ -207,14 +212,14 @@ export default {
       this.state.log.push({
         type,
         key,
-        value,
+        value
       });
 
       if (key === 32) {
         this.state.totals[type].coins = value;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
