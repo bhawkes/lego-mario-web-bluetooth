@@ -11,7 +11,7 @@ div
     .row
       .col
         h2.mb-4 Sensors
-        .sensor.mb-2
+        //- .sensor.mb-2
           .row
             .col-4
               .sensor__box.sensor__box--tag
@@ -26,13 +26,13 @@ div
             .col-8
               h3.mb-3 RGB
               pre r:{{ sensors.rgb[0] }}, g:{{ sensors.rgb[1] }}, b:{{ sensors.rgb[2] }}
-        .sensor.mb-2
+        //- .sensor.mb-2
           .row
             .col-4
               .sensor__box.sensor__box--pants
             .col-8
               h3.mb-3 Pants
-        .sensor.mb-2
+        //- .sensor.mb-2
           .row
             .col-4
               .sensor__box.sensor__box--motion
