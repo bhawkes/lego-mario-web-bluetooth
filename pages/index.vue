@@ -5,7 +5,8 @@ div
       .col
         h1 Lego Mario
       .col.align-self-center
-        button(@click="requestAndConnect", :disabled="device") connect
+        button(@click="requestAndConnect", :disabled="device") Connect
+        .text-muted Turn on Mario and press Bluetooth Button
 
   .container
     .row
