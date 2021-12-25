@@ -12,9 +12,8 @@
   },
   "dependencies": {
     "bootstrap-4-grid": "^3.4.0",
-    "nuxt": "^2.13.0",
+    "nuxt": "^2.2.0",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0"
-  },
-  "devDependencies": {}
+  }
 }
