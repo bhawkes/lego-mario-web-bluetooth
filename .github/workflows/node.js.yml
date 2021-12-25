@@ -29,3 +29,16 @@ jobs:
     - run: npm ci
     - run: npm run generate --if-present
     - run: npm test --if-present
+
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${github_token}@github.com/${repository}
+        npm run deploy
+      env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        repository: ${{ github.repository }}
