@@ -5,7 +5,8 @@ div
       .col
         h1 Lego Mario
       .col.align-self-center
-        button(@click="requestAndConnect", :disabled="device") connect
+        button(@click="requestAndConnect", :disabled="device") Connect
+        .text-muted Turn on Mario and press Bluetooth Button
 
   .container
     .row
@@ -26,18 +27,20 @@ div
             .col-8
               h3.mb-3 RGB
               pre r:{{ sensors.rgb[0] }}, g:{{ sensors.rgb[1] }}, b:{{ sensors.rgb[2] }}
-        //- .sensor.mb-2
+        .sensor.mb-2
           .row
             .col-4
               .sensor__box.sensor__box--pants
             .col-8
               h3.mb-3 Pants
-        //- .sensor.mb-2
+              pre {{ JSON.stringify(sensors.pants) }}
+        .sensor.mb-2
           .row
             .col-4
               .sensor__box.sensor__box--motion
             .col-8
               h3.mb-3 Motion
+              pre {{ JSON.stringify(sensors.motion) }}
       .col
         h2.mb-4 Score = {{total}}
         h3(v-for="entry in scores", v-if="entry.value") {{ events.types[entry.type] ? events.types[entry.type].name : '???' }} = {{ entry.value }}
@@ -116,6 +119,7 @@ export default {
           // acceptAllDevices: true,
           optionalServices: ["00001623-1212-efde-1623-785feabcd123"]
         });
+        console.log("Device connected", this.device)
       } catch (err) {
         return;
       }
@@ -145,7 +149,7 @@ export default {
       await this.subscribeToEvents();
       await this.subscribeToColor();
       await this.subscribeToPants();
-      // await this.subscribeToMotion();
+      await this.subscribeToMotion();
     },
     async subscribeToEvents() {
       await this.characteristic.writeValue(
@@ -192,20 +196,28 @@ export default {
 
       const messageType = messageHeader[2];
 
-      if (messageType != 69) return;
+      if (messageType !== 69) return;
 
       const port = messageBody[0];
 
       if (port === 0) {
         this.sensors.motion = messageBody.slice(1);
+        // console.log('Motion:', this.sensors.motion.toString())
       } else if (port === 1) {
         this.sensors.rgb = messageBody.slice(1);
+        // console.log('RGB:', this.sensors.rgb.toString())
+      } else if (port === 2) {
+        this.sensors.pants = messageBody.slice(1);
+        // console.log('Pants:', this.sensors.pants.toString())
       } else if (port === 3) {
         const eventType = messageBody[1];
         const eventKey = messageBody[2];
         const eventValue = messageBody[3] + messageBody[4] * 256;
 
+        // console.log('Event:', eventType, eventKey, eventValue)
         this.parseEvent(eventType, eventKey, eventValue);
+      } else {
+        console.log(`Unhandled event: port=${port} messageType=${messageType} messageHeader=${messageHeader} messageBody=${messageBody}`)
       }
     },
     parseEvent(type, key, value) {
@@ -265,6 +277,7 @@ pre {
   display: flex;
   flex-wrap: wrap;
 }
+
 .grid__col {
   flex: 1;
 }
